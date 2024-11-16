@@ -9,20 +9,20 @@ public class ObjectManager : MonoBehaviour
     [Header("Spawn time range")]
     [SerializeField] float minSpawnTime = 0.5f;
     [SerializeField] float maxSpawnTime = 5f;
-    private float spawnTime = 0;
+    private float nextSpawnTime = 0;
     private float lastSpawnTime = 0;
 
     void Start()
     {
-        spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+        nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
     }
 
     void Update()
     {
-        if (Time.time - lastSpawnTime > spawnTime)
+        if (Time.time - lastSpawnTime > nextSpawnTime)
         {
             lastSpawnTime = Time.time;
-            spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+            nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
 
             Instantiate(objectPrefab);
             //randomize position here
