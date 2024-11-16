@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     PlayerStates playerState = PlayerStates.Idle;
 
     //Footsteps variables
-    TerrainType currentTerrain = TerrainType.Wood; // we're gonna change this depending on the current stage
+    public TerrainType currentTerrain = TerrainType.Stone;
 
     [SerializeField] PlayerFootsteps playerFootsteps;
     float lastFootstepTime;
