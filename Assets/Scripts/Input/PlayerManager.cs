@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Player variables")]
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] Vaccum vaccumObject;
+    [SerializeField] Vacuum vacuumObject;
 
     private Rigidbody2D rb;
     private PlayerInput playerInput;
@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
                 if (suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Suck;
-                    vaccumObject.gameObject.SetActive(true);
+                    vacuumObject.gameObject.SetActive(true);
                     break;
                 }
                 if (dropAction.IsPressed())
@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviour
                 if (suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Suck;
-                    vaccumObject.gameObject.SetActive(true);
+                    vacuumObject.gameObject.SetActive(true);
                     break;
                 }
                 UpdateMove();
@@ -78,14 +78,14 @@ public class PlayerManager : MonoBehaviour
                 if (!suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Idle;
-                    vaccumObject.gameObject.SetActive(false);
+                    vacuumObject.gameObject.SetActive(false);
                     break;
                 }
                 UpdateSuck();
                 break;
             case PlayerStates.Drop:
-                vaccumObject.gameObject.SetActive(true);
-                vaccumObject.DropObjects();
+                vacuumObject.gameObject.SetActive(true);
+                vacuumObject.DropObjects();
                 playerState = PlayerStates.Idle;
                 break;
             default:

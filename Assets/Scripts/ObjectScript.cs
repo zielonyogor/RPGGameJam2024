@@ -1,8 +1,17 @@
 using UnityEngine;
 
+public enum Eras
+{
+    Past,
+    Present,
+    Future
+}
+
 public class ObjectScript : MonoBehaviour
 {
-    public string eraName = "Cyberpunk";
-    public string currentEra = "Medieval"; //idk if that will be here
+    public int objectID = 0;
+
+    public Eras originalEra = Eras.Past;
+    public Eras currentEra;
 
 }
