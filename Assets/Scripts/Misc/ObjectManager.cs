@@ -24,8 +24,8 @@ public class ObjectManager : MonoBehaviour
             lastSpawnTime = Time.time;
             nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
 
-            Instantiate(objectPrefab);
-            //randomize position here
+            Vector3 randomPosition = new Vector3(Random.Range(-4, 4), Random.Range(-4, 4), 0); // randomize position here
+            Instantiate(objectPrefab, randomPosition, Quaternion.identity);
         }
     }
 }

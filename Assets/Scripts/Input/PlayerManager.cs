@@ -36,8 +36,6 @@ public class PlayerManager : MonoBehaviour
         moveAction = playerInput.actions["Move"];
         suckAction = playerInput.actions["Suck"];
         dropAction = playerInput.actions["Drop"];
-
-        //playerFootsteps = GetComponent<PlayerFootsteps>(); - eeeee jesli footsteps sa dzieckiem to nie zadziala btw, zrobilam jako serialized i dalam ref
         lastFootstepTime = Time.time;
     }
 
