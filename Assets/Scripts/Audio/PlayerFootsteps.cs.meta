@@ -1,0 +1,40 @@
+fileFormatVersion: 2
+guid: aa14dbeac33a14ddb89641af72dcff3a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - foliage1: {fileID: 8300000, guid: a8257f3fffab5428a86273c10bc98307, type: 3}
+  - foliage2: {fileID: 8300000, guid: ae1069f673d44432f851d8f80f6ac9af, type: 3}
+  - foliage3: {fileID: 8300000, guid: cefc65967dfa4443ba22fd667f880c09, type: 3}
+  - foliage4: {fileID: 8300000, guid: 0c44245c3c9ed4554a1212936def855e, type: 3}
+  - grass1: {fileID: 8300000, guid: 357e0b19564144c1bbe1d14a1ef3ba87, type: 3}
+  - grass2: {fileID: 8300000, guid: 9fa77b01ad9ea4e0f847ef48d8cc8d6a, type: 3}
+  - grass3: {fileID: 8300000, guid: af9183eaee1934be4ba7066c376be575, type: 3}
+  - grass4: {fileID: 8300000, guid: d392395c71a354133b5ecf3fbfcaeebd, type: 3}
+  - grates1: {fileID: 8300000, guid: e33db009e77b548608ae260b3c7af530, type: 3}
+  - grates2: {fileID: 8300000, guid: 280f83905c0594fe29913b884c6512d5, type: 3}
+  - grates3: {fileID: 8300000, guid: f5b11bd700c984aafafb31854dc1f9bb, type: 3}
+  - grates4: {fileID: 8300000, guid: b419c18c27e9a401db2c7a2b367608fa, type: 3}
+  - metal1: {fileID: 8300000, guid: ab3f2980da72b4f63a4ad31f0142c49d, type: 3}
+  - metal2: {fileID: 8300000, guid: 41034f94e976c4c8489c9528ae0b1314, type: 3}
+  - metal3: {fileID: 8300000, guid: 6760d443082794b66b97ed33c27f53ff, type: 3}
+  - metal4: {fileID: 8300000, guid: bc81ec8c298fc43f4a67778365302ce3, type: 3}
+  - pebbles1: {fileID: 8300000, guid: 236858143c17d41348e1845d89e2e4d0, type: 3}
+  - pebbles2: {fileID: 8300000, guid: c799a895c27144608b35c034282e565f, type: 3}
+  - pebbles3: {fileID: 8300000, guid: 55cfdf63e08194a89b89535bd4f1a168, type: 3}
+  - pebbles4: {fileID: 8300000, guid: 7eebe82f7561446fbbb818ef5b710e0a, type: 3}
+  - stone1: {fileID: 8300000, guid: 7639c665c3acb4875bbdaf24adb92b5e, type: 3}
+  - stone2: {fileID: 8300000, guid: 237d1a441a9a04494afb874d29d48417, type: 3}
+  - stone3: {fileID: 8300000, guid: d807224c96ca24aa1a8b2272f382442d, type: 3}
+  - stone4: {fileID: 8300000, guid: 7ec823f59dbfc482ab21a189199ac258, type: 3}
+  - wood1: {fileID: 8300000, guid: 7b09a78c7e1b240a9aa5a9c15657e602, type: 3}
+  - wood2: {fileID: 8300000, guid: b997c8fa58bb94c6d81207f02653b1b3, type: 3}
+  - wood3: {fileID: 8300000, guid: 9075424bd7f6d4c46b03ee1e524c6a79, type: 3}
+  - wood4: {fileID: 8300000, guid: 45332162f13d345b5ba3a42e1ff5f2bf, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

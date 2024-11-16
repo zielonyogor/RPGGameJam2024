@@ -19,14 +19,20 @@ public class PlayerManager : MonoBehaviour
     private InputAction moveAction;
 
     private Vector2 moveDir = new Vector2(0, 0);
+    TerrainType currentTerrain = TerrainType.Wood; // we're gonna change this depending on the current stage
 
     PlayerStates playerState = PlayerStates.Idle;
+
+    PlayerFootsteps playerFootsteps;
+    float lastFootstepTime;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
+        playerFootsteps = GetComponent<PlayerFootsteps>();
+        lastFootstepTime = Time.time;
     }
 
     void Update()
@@ -54,6 +60,11 @@ public class PlayerManager : MonoBehaviour
         {
             Vector2 newPosition = rb.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
             rb.MovePosition(newPosition);
+            if (Time.time - lastFootstepTime > moveSpeed / 15f)
+            {
+                playerFootsteps.PlayFootstepSound(currentTerrain);
+                lastFootstepTime = Time.time;
+            }
         }
     }
 }
