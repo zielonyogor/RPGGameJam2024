@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 2055120287}
   - component: {fileID: 2055120286}
   m_Layer: 0
-  m_Name: VaccumField
+  m_Name: VacuumField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
