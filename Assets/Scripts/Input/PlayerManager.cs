@@ -14,8 +14,10 @@ public class PlayerManager : MonoBehaviour
     [Header("Player variables")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] Vacuum vacuumObject;
+    [SerializeField] GameObject startingScene;
+    [SerializeField] CameraController cameraController;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D playerBody;
     private PlayerInput playerInput;
     private InputAction moveAction, suckAction, dropAction;
 
@@ -31,12 +33,14 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        playerBody = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         suckAction = playerInput.actions["Suck"];
         dropAction = playerInput.actions["Drop"];
         lastFootstepTime = Time.time;
+        playerBody.MovePosition(startingScene.transform.position);
+        cameraController.MoveCameraTo(startingScene.transform.position);
     }
 
     void Update()
@@ -98,14 +102,15 @@ public class PlayerManager : MonoBehaviour
         moveDir = moveAction.ReadValue<Vector2>();
         if (moveDir != Vector2.zero)
         {
-            Vector2 newPosition = rb.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(newPosition);
+            Vector2 newPosition = playerBody.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
+            playerBody.MovePosition(newPosition);
             if (Time.time - lastFootstepTime > moveSpeed / 15f)
             {
                 playerFootsteps.PlayFootstepSound(currentTerrain);
                 lastFootstepTime = Time.time;
             }
         }
+        cameraController.MoveCameraTo(playerBody.position);
     }
 
     private void UpdateSuck()
