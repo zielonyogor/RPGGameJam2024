@@ -28,7 +28,7 @@ public class ObjectManager : MonoBehaviour
     {
         nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         Vacuum.OnObjectSucked.AddListener(HandleObjectSucked);
-
+        Vacuum.OnObjectDropped.AddListener(HandleObjectDropped);
     }
 
     void Update()
@@ -86,6 +86,7 @@ public class ObjectManager : MonoBehaviour
 
     private void HandleObjectDropped(int objectID)
     {
+        //cos tu jeszcze nie dziala aaaaaaaaaaaaaaaaaaaa
         foreach (ObjectScript obj in spawnedObjects) //goofy ass ale nam wystarczy i guess
         {
             if (objectID == obj.objectID)
@@ -96,7 +97,7 @@ public class ObjectManager : MonoBehaviour
                 {
                     newEra = Eras.Past;
                 }
-                else if (obj.gameObject.transform.position.x < 16)
+                else if (obj.gameObject.transform.position.y > 16)
                 {
                     newEra = Eras.Present;
                 }
@@ -105,7 +106,11 @@ public class ObjectManager : MonoBehaviour
                     newEra = Eras.Future;
                 }
 
-                if (obj.currentEra != newEra) { ++counterController.anomalies; }
+                if (obj.currentEra != obj.originalEra)
+                {
+                    ++counterController.anomalies;
+                }
+                Debug.Log($"Object ({obj.objectID}) was dropped at {newEra}, previous era {obj.currentEra}, original era {obj.originalEra}");
                 obj.currentEra = newEra;
 
                 break;

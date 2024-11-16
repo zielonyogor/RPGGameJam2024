@@ -32,6 +32,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] PlayerFootsteps playerFootsteps;
     float lastFootstepTime;
 
+    private float dropCooldown = 0.3f;
+    private float lastDropTime = 0;
+
     void Start()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -55,8 +58,9 @@ public class PlayerManager : MonoBehaviour
                     vacuumObject.gameObject.SetActive(true);
                     break;
                 }
-                if (dropAction.IsPressed())
+                if (dropAction.IsPressed() && Time.time - lastDropTime > dropCooldown)
                 {
+                    lastDropTime = Time.time;
                     playerState = PlayerStates.Drop;
                     break;
                 }
@@ -66,8 +70,9 @@ public class PlayerManager : MonoBehaviour
                 }
                 break;
             case PlayerStates.Move:
-                if (dropAction.IsPressed())
+                if (dropAction.IsPressed() && Time.time - lastDropTime > dropCooldown)
                 {
+                    lastDropTime = Time.time;
                     playerState = PlayerStates.Drop;
                     break;
                 }

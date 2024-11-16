@@ -8,7 +8,7 @@ public class Portal : MonoBehaviour
     [SerializeField] Transform teleportPoint;
     [SerializeField] TerrainType terrainAtTheOtherSide;
 
-    public float teleportFreezeTime = 1f;
+    public float teleportFreezeTime = 0.5f;
     private bool isFreezeCoroutineExecuting = false;
 
     private void OnTriggerEnter2D(Collider2D player)
@@ -18,7 +18,7 @@ public class Portal : MonoBehaviour
             PlayerManager playerManager = player.GetComponent<PlayerManager>();
             playerManager.movementEnabled = false;
             StartCoroutine(ExecuteDelayed(teleportFreezeTime, () =>
-            {            
+            {
                 player.transform.position = teleportPoint.position;
                 playerManager.movementEnabled = true;
                 playerManager.currentTerrain = terrainAtTheOtherSide;
