@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] Vaccum vaccumObject;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D playerBody;
     private PlayerInput playerInput;
     private InputAction moveAction, suckAction, dropAction;
 
@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        playerBody = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         suckAction = playerInput.actions["Suck"];
@@ -98,8 +98,8 @@ public class PlayerManager : MonoBehaviour
         moveDir = moveAction.ReadValue<Vector2>();
         if (moveDir != Vector2.zero)
         {
-            Vector2 newPosition = rb.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(newPosition);
+            Vector2 newPosition = playerBody.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
+            playerBody.MovePosition(newPosition);
             if (Time.time - lastFootstepTime > moveSpeed / 15f)
             {
                 playerFootsteps.PlayFootstepSound(currentTerrain);
