@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 196776242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5206652, y: 1.9653881, z: -0.15278435}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1551,7 +1551,7 @@ Transform:
   m_GameObject: {fileID: 1187521151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1573,7 +1573,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   vaccumObject: {fileID: 2055120286}
-  currentTerrain: 0
+  startingScene: {fileID: 1015679749}
+  cameraController: {fileID: 196776243}
+  currentTerrain: 5
   playerFootsteps: {fileID: 1472200991}
 --- !u!1001 &1287394995
 PrefabInstance:

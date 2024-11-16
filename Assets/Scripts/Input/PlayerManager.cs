@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     [Header("Player variables")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] Vaccum vaccumObject;
+    [SerializeField] GameObject startingScene;
+    [SerializeField] CameraController cameraController;
 
     private Rigidbody2D playerBody;
     private PlayerInput playerInput;
@@ -37,6 +39,8 @@ public class PlayerManager : MonoBehaviour
         suckAction = playerInput.actions["Suck"];
         dropAction = playerInput.actions["Drop"];
         lastFootstepTime = Time.time;
+        playerBody.MovePosition(startingScene.transform.position);
+        cameraController.MoveCameraTo(startingScene.transform.position);
     }
 
     void Update()
@@ -106,6 +110,7 @@ public class PlayerManager : MonoBehaviour
                 lastFootstepTime = Time.time;
             }
         }
+        cameraController.MoveCameraTo(playerBody.position);
     }
 
     private void UpdateSuck()

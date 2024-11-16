@@ -7,14 +7,11 @@ public class Portal : MonoBehaviour
 
     [SerializeField] TerrainType terrainAtTheOtherSide;
 
-    [SerializeField] CameraController cameraController;
-
     private void OnTriggerEnter2D(Collider2D player)
     {
         if (player.gameObject.CompareTag("Player"))
         {
-            player.transform.position = teleportPoint.position;
-            cameraController.MoveCameraTo(teleportPoint.position);
+            player.transform.position = teleportPoint.position;;
             PlayerManager playerManager = player.GetComponent<PlayerManager>();
             playerManager.currentTerrain = terrainAtTheOtherSide;
         }
