@@ -13,9 +13,11 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Player variables")]
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] Vaccum vaccumObject;
+    [SerializeField] Vacuum vacuumObject;
+    [SerializeField] GameObject startingScene;
+    [SerializeField] CameraController cameraController;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D playerBody;
     private PlayerInput playerInput;
     private InputAction moveAction, suckAction, dropAction;
 
@@ -24,19 +26,25 @@ public class PlayerManager : MonoBehaviour
     PlayerStates playerState = PlayerStates.Idle;
 
     //Footsteps variables
-    TerrainType currentTerrain = TerrainType.Wood; // we're gonna change this depending on the current stage
+    public TerrainType currentTerrain = TerrainType.Stone;
+    public bool movementEnabled = true;
 
     [SerializeField] PlayerFootsteps playerFootsteps;
     float lastFootstepTime;
 
+    private float dropCooldown = 0.3f;
+    private float lastDropTime = 0;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        playerBody = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         suckAction = playerInput.actions["Suck"];
         dropAction = playerInput.actions["Drop"];
         lastFootstepTime = Time.time;
+        playerBody.MovePosition(startingScene.transform.position);
+        cameraController.MoveCameraTo(startingScene.transform.position);
     }
 
     void Update()
@@ -47,11 +55,12 @@ public class PlayerManager : MonoBehaviour
                 if (suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Suck;
-                    vaccumObject.gameObject.SetActive(true);
+                    vacuumObject.gameObject.SetActive(true);
                     break;
                 }
-                if (dropAction.IsPressed())
+                if (dropAction.IsPressed() && Time.time - lastDropTime > dropCooldown)
                 {
+                    lastDropTime = Time.time;
                     playerState = PlayerStates.Drop;
                     break;
                 }
@@ -61,15 +70,16 @@ public class PlayerManager : MonoBehaviour
                 }
                 break;
             case PlayerStates.Move:
-                if (dropAction.IsPressed())
+                if (dropAction.IsPressed() && Time.time - lastDropTime > dropCooldown)
                 {
+                    lastDropTime = Time.time;
                     playerState = PlayerStates.Drop;
                     break;
                 }
                 if (suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Suck;
-                    vaccumObject.gameObject.SetActive(true);
+                    vacuumObject.gameObject.SetActive(true);
                     break;
                 }
                 UpdateMove();
@@ -78,14 +88,14 @@ public class PlayerManager : MonoBehaviour
                 if (!suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Idle;
-                    vaccumObject.gameObject.SetActive(false);
+                    vacuumObject.gameObject.SetActive(false);
                     break;
                 }
                 UpdateSuck();
                 break;
             case PlayerStates.Drop:
-                vaccumObject.gameObject.SetActive(true);
-                vaccumObject.DropObjects();
+                vacuumObject.gameObject.SetActive(true);
+                vacuumObject.DropObjects();
                 playerState = PlayerStates.Idle;
                 break;
             default:
@@ -95,17 +105,18 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdateMove()
     {
-        moveDir = moveAction.ReadValue<Vector2>();
+        moveDir = movementEnabled ? moveAction.ReadValue<Vector2>() : Vector2.zero;
         if (moveDir != Vector2.zero)
         {
-            Vector2 newPosition = rb.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(newPosition);
+            Vector2 newPosition = playerBody.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
+            playerBody.MovePosition(newPosition);
             if (Time.time - lastFootstepTime > moveSpeed / 15f)
             {
                 playerFootsteps.PlayFootstepSound(currentTerrain);
                 lastFootstepTime = Time.time;
             }
         }
+        cameraController.MoveCameraTo(playerBody.position);
     }
 
     private void UpdateSuck()

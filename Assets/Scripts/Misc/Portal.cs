@@ -1,14 +1,38 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
     [Tooltip("Teleport - a child of a second portal")]
     [SerializeField] Transform teleportPoint;
-    private void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] TerrainType terrainAtTheOtherSide;
+
+    public float teleportFreezeTime = 0.5f;
+    private bool isFreezeCoroutineExecuting = false;
+
+    private void OnTriggerEnter2D(Collider2D player)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (player.gameObject.CompareTag("Player"))
         {
-            other.transform.position = teleportPoint.position;
+            PlayerManager playerManager = player.GetComponent<PlayerManager>();
+            playerManager.movementEnabled = false;
+            StartCoroutine(ExecuteDelayed(teleportFreezeTime, () =>
+            {
+                player.transform.position = teleportPoint.position;
+                playerManager.movementEnabled = true;
+                playerManager.currentTerrain = terrainAtTheOtherSide;
+            }
+            ));
         }
+    }
+
+    private IEnumerator ExecuteDelayed(float time, Action task)
+    {
+        if (isFreezeCoroutineExecuting) yield break;
+        isFreezeCoroutineExecuting = true;
+        yield return new WaitForSeconds(time);
+        task();
+        isFreezeCoroutineExecuting = false;
     }
 }

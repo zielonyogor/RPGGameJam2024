@@ -1,29 +1,43 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Vaccum : MonoBehaviour
+public class Vacuum : MonoBehaviour
 {
-    List<ObjectScript> suckedObjects = new List<ObjectScript>();
+    [SerializeField] private TextMeshProUGUI equipmentCounter;
+    Queue<ObjectScript> suckedObjects = new Queue<ObjectScript>();
+    [SerializeField] int maxObjectCap = 5;
+
+    public static UnityEvent<int> OnObjectSucked = new UnityEvent<int>();
+    public static UnityEvent<int> OnObjectDropped = new UnityEvent<int>();
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Object"))
         {
+            if (maxObjectCap == suckedObjects.Count) return;
             Debug.Log("obiekt!!");
             ObjectScript newObject = other.gameObject.GetComponent<ObjectScript>();
-            suckedObjects.Add(newObject);
+            Debug.Log($"Sucking object with ID: {newObject.objectID}, from era: {newObject.currentEra}, original era: {newObject.originalEra}");
+            suckedObjects.Enqueue(newObject);
             other.gameObject.SetActive(false);
+
+            equipmentCounter.text = $"{suckedObjects.Count}/{maxObjectCap}";
+            OnObjectSucked.Invoke(newObject.objectID);
         }
     }
 
     public void DropObjects()
     {
-        Debug.Log("helo");
-        foreach (ObjectScript item in suckedObjects)
-        {
-            item.gameObject.SetActive(true);
-            item.currentEra = "tu puzniej trzeba zmienic na current era";
-            item.gameObject.transform.position = transform.position;
-        }
+        if (suckedObjects.Count == 0) return;
+        ObjectScript item = suckedObjects.Dequeue();
+        item.gameObject.SetActive(true);
+        item.gameObject.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+        Debug.Log(item.objectID);
         gameObject.SetActive(false);
+
+        equipmentCounter.text = $"{suckedObjects.Count}/{maxObjectCap}";
+        OnObjectDropped.Invoke(item.objectID);
     }
 }
