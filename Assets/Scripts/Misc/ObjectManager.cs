@@ -3,6 +3,9 @@ using UnityEngine;
 //disable entire Game Object if you don't want a lot of objects in scene
 public class ObjectManager : MonoBehaviour
 {
+    [Header("Counter")]
+    [SerializeField] CounterController counterController;
+
     [Header("Object to spawn")]
     [SerializeField] GameObject objectPrefab;
 
@@ -26,6 +29,7 @@ public class ObjectManager : MonoBehaviour
 
             Vector3 randomPosition = new Vector3(Random.Range(-4, 4), Random.Range(-4, 4), 0); // randomize position here
             Instantiate(objectPrefab, randomPosition, Quaternion.identity);
+            ++counterController.anomalies;
         }
     }
 }
