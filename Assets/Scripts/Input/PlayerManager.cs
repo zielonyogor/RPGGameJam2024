@@ -27,6 +27,7 @@ public class PlayerManager : MonoBehaviour
 
     //Footsteps variables
     public TerrainType currentTerrain = TerrainType.Stone;
+    public bool movementEnabled = true;
 
     [SerializeField] PlayerFootsteps playerFootsteps;
     float lastFootstepTime;
@@ -99,7 +100,7 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdateMove()
     {
-        moveDir = moveAction.ReadValue<Vector2>();
+        moveDir = movementEnabled ? moveAction.ReadValue<Vector2>() : Vector2.zero;
         if (moveDir != Vector2.zero)
         {
             Vector2 newPosition = playerBody.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
