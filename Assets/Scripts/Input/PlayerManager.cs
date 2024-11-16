@@ -5,25 +5,28 @@ enum PlayerStates
 {
     Idle,
     Move,
-    Suck
+    Suck,
+    Drop //wyrzucanie rzeczy
 }
 
 public class PlayerManager : MonoBehaviour
 {
     [Header("Player variables")]
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] Vaccum vaccumObject;
 
     private Rigidbody2D rb;
-
     private PlayerInput playerInput;
-    private InputAction moveAction;
+    private InputAction moveAction, suckAction, dropAction;
 
     private Vector2 moveDir = new Vector2(0, 0);
-    TerrainType currentTerrain = TerrainType.Wood; // we're gonna change this depending on the current stage
 
     PlayerStates playerState = PlayerStates.Idle;
 
-    PlayerFootsteps playerFootsteps;
+    //Footsteps variables
+    TerrainType currentTerrain = TerrainType.Wood; // we're gonna change this depending on the current stage
+
+    [SerializeField] PlayerFootsteps playerFootsteps;
     float lastFootstepTime;
 
     void Start()
@@ -31,7 +34,10 @@ public class PlayerManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
-        playerFootsteps = GetComponent<PlayerFootsteps>();
+        suckAction = playerInput.actions["Suck"];
+        dropAction = playerInput.actions["Drop"];
+
+        //playerFootsteps = GetComponent<PlayerFootsteps>(); - eeeee jesli footsteps sa dzieckiem to nie zadziala btw, zrobilam jako serialized i dalam ref
         lastFootstepTime = Time.time;
     }
 
@@ -40,13 +46,49 @@ public class PlayerManager : MonoBehaviour
         switch (playerState)
         {
             case PlayerStates.Idle:
+                if (suckAction.IsPressed())
+                {
+                    playerState = PlayerStates.Suck;
+                    vaccumObject.gameObject.SetActive(true);
+                    break;
+                }
+                if (dropAction.IsPressed())
+                {
+                    playerState = PlayerStates.Drop;
+                    break;
+                }
                 if (moveAction.ReadValue<Vector2>() != Vector2.zero)
                 {
                     playerState = PlayerStates.Move;
                 }
                 break;
             case PlayerStates.Move:
+                if (dropAction.IsPressed())
+                {
+                    playerState = PlayerStates.Drop;
+                    break;
+                }
+                if (suckAction.IsPressed())
+                {
+                    playerState = PlayerStates.Suck;
+                    vaccumObject.gameObject.SetActive(true);
+                    break;
+                }
                 UpdateMove();
+                break;
+            case PlayerStates.Suck:
+                if (!suckAction.IsPressed())
+                {
+                    playerState = PlayerStates.Idle;
+                    vaccumObject.gameObject.SetActive(false);
+                    break;
+                }
+                UpdateSuck();
+                break;
+            case PlayerStates.Drop:
+                vaccumObject.gameObject.SetActive(true);
+                vaccumObject.DropObjects();
+                playerState = PlayerStates.Idle;
                 break;
             default:
                 break;
@@ -66,5 +108,10 @@ public class PlayerManager : MonoBehaviour
                 lastFootstepTime = Time.time;
             }
         }
+    }
+
+    private void UpdateSuck()
+    {
+        //idk czy trzeba tu cos dawać tbh, wszystko chyba w vaccum.cs
     }
 }
