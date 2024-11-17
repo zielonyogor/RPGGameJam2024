@@ -43,9 +43,4 @@ public class PlayerFootsteps : MonoBehaviour
         audioSource.pitch = Random.Range(0.75f, 1.25f);
         audioSource.PlayOneShot(terrainSounds[Random.Range(0, terrainSounds.Length)]);
     }
-
-    void Update()
-    {
-        
-    }
 }

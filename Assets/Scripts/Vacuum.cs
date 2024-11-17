@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Vacuum : MonoBehaviour
 {
     [SerializeField] private HUDController hudController;
+    [SerializeField] VacuumSounds vacuumSounds;
     Queue<ObjectScript> suckedObjects = new Queue<ObjectScript>();
 
     private BoxCollider2D boxCollider2D;
@@ -35,12 +36,10 @@ public class Vacuum : MonoBehaviour
             ObjectScript newObject = other.gameObject.GetComponent<ObjectScript>();
             // Debug.Log($"Sucking object with ID: {newObject.objectID}, from era: {newObject.currentEra}, original era: {newObject.originalEra}");
 
-
-
             suckedObjects.Enqueue(newObject);
 
+            vacuumSounds.PlaySingleSuccSound();
             StartCoroutine(AttractObjectToPlayer(other.gameObject, newObject));
-
 
             hudController.equipment = suckedObjects.Count;
             OnObjectSucked.Invoke(newObject.objectID);
@@ -60,7 +59,7 @@ public class Vacuum : MonoBehaviour
 
     private IEnumerator<object> AttractObjectToPlayer(GameObject obj, ObjectScript newObject)
     {
-        float attractionDuration = 0.2f; // Time in seconds for the object to move
+        float attractionDuration = 0.4f; // Time in seconds for the object to move
         float elapsedTime = 0f;
 
         Vector3 startPosition = obj.transform.position;
@@ -79,6 +78,7 @@ public class Vacuum : MonoBehaviour
 
         // Disable the object
         obj.SetActive(false);
+        vacuumSounds.PlayPopSound();
     }
 
 
@@ -102,6 +102,9 @@ public class Vacuum : MonoBehaviour
         StartCoroutine(MoveObjectAway(item.gameObject, initialPosition, moveDirection, moveDistance, moveDuration));
 
 
+        item.gameObject.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+        
+        vacuumSounds.PlayPopSound();
 
         hudController.equipment = suckedObjects.Count;
         OnObjectDropped.Invoke(item.objectID);

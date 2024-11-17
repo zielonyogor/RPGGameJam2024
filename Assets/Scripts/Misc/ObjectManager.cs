@@ -60,13 +60,13 @@ public class ObjectManager : MonoBehaviour
             GameObject newObject = Instantiate(objectPrefab, randomPosition, Quaternion.identity, parentPosition);
 
             ObjectScript objectScript = newObject.GetComponent<ObjectScript>();
-            objectScript.originalEra = (Era)currentObjectEra;
-            if (objectScript.originalEra != (Era)eraToSpawn)
+            objectScript.originalEra = (Era) currentObjectEra;
+            if (objectScript.originalEra != (Era) eraToSpawn)
             {
-                objectScript.currentEra = (Era)eraToSpawn;
+                objectScript.currentEra = (Era) eraToSpawn;
                 ++counterController.anomalies;
             }
-            objectScript.currentEra = (Era)eraToSpawn;
+            objectScript.currentEra = (Era) eraToSpawn;
             objectScript.objectID = spawnedObjects.Count;
             spawnedObjects.Add(objectScript);
         }
