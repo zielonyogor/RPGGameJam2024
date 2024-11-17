@@ -24,6 +24,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: waitTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: walkTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6371303442552606435, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: originalEra
       value: 2
@@ -133,10 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34990367c9063c4db8b7b46067aeb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   isWalking: 0
-  walkTime: 2
-  waitTime: 5
+  walkTime: 4
+  waitTime: 4
 --- !u!50 &2968549922462953608
 Rigidbody2D:
   serializedVersion: 5

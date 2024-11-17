@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: waitTime
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: walkTime
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: moveSpeed
