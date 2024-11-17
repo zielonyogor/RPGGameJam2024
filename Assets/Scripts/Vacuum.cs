@@ -13,10 +13,16 @@ public class Vacuum : MonoBehaviour
     public static UnityEvent<int> OnObjectSucked = new UnityEvent<int>();
     public static UnityEvent<int> OnObjectDropped = new UnityEvent<int>();
 
+
+    public PlayerManager playerManager;
     private void Start()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
         boxCollider2D.enabled = false;
+        if (playerManager == null)
+        {
+            playerManager = FindObjectOfType<PlayerManager>();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -79,12 +85,50 @@ public class Vacuum : MonoBehaviour
     public void DropObjects()
     {
         if (suckedObjects.Count == 0) return;
+
         ObjectScript item = suckedObjects.Dequeue();
         item.gameObject.SetActive(true);
-        item.gameObject.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
-        // Debug.Log(item.objectID);
+
+        // Set initial position slightly away from the player
+        Vector3 initialPosition = transform.position + new Vector3(0.5f, 0.5f, 0); ;
+        item.gameObject.transform.position = initialPosition;
+
+        // Calculate the direction vector away from the character
+        Vector3 moveDirection = playerManager.moveDir;
+        float moveDistance = 10f; // Distance to move away
+        float moveDuration = 0.5f; // Duration of the movement
+
+        // Start coroutine to move the object away
+        StartCoroutine(MoveObjectAway(item.gameObject, initialPosition, moveDirection, moveDistance, moveDuration));
+
+
 
         hudController.equipment = suckedObjects.Count;
         OnObjectDropped.Invoke(item.objectID);
     }
+    
+    private IEnumerator<object> MoveObjectAway(GameObject obj, Vector3 startPosition, Vector3 direction, float distance, float duration)
+
+    {
+        float elapsedTime = 0f;
+        Vector3 targetPosition = startPosition + direction * distance;
+
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            float easedT = 1 - Mathf.Pow(1 - t, 2);  // This is a quadratic ease-out function
+
+            obj.transform.position = Vector3.Lerp(startPosition, targetPosition, easedT);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the object is exactly at the target position
+        obj.transform.position = targetPosition;
+    }
+
+
 }
+
+
+
