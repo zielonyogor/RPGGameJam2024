@@ -100,6 +100,7 @@ public class PlayerManager : MonoBehaviour
                 UpdateSuck();
                 break;
             case PlayerStates.Drop:
+                if (transform.position.y > -10f) return;
                 vacuumObject.DropObjects();
                 playerState = PlayerStates.Idle;
                 break;
