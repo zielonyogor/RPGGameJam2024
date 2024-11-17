@@ -15,6 +15,11 @@ public class ObjectMovement : MonoBehaviour
     public float waitTime;
     private float waitCounter;
 
+  
+
+    private Animator _animator;
+    private const string _horizontal = "Horizontal";
+
     enum WalkDirection
     {
         up, bottom, left, right
@@ -27,7 +32,9 @@ public class ObjectMovement : MonoBehaviour
         objectRigidbody = GetComponent<Rigidbody2D>();
 
         ChooseDirection();
-        
+
+        _animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -73,8 +80,25 @@ public class ObjectMovement : MonoBehaviour
             }
         }
 
+        MoveAnimations();   
+
     }
 
+    private void MoveAnimations()
+    {
+        if (!isWalking)
+        {
+            _animator.SetFloat(_horizontal, 0);
+        }
+        else if (walkDirection == WalkDirection.right)
+        {
+            _animator.SetFloat(_horizontal, 1);
+        }
+        else
+        {
+            _animator.SetFloat(_horizontal, -1);
+        }
+    }
     public void ChooseDirection()
     {
         walkDirection = (WalkDirection)UnityEngine.Random.Range(0, 4);
