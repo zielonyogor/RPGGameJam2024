@@ -32,7 +32,7 @@ public class Vacuum : MonoBehaviour
             suckedObjects.Enqueue(newObject);
             other.gameObject.SetActive(false);
 
-            equipmentCounter.text = $"{suckedObjects.Count}/{maxObjectCap}";
+            equipmentCounter.text = $"vacuum: {suckedObjects.Count}/{maxObjectCap}";
             OnObjectSucked.Invoke(newObject.objectID);
         }
     }
