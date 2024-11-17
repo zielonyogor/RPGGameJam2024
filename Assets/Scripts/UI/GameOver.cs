@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,6 @@ public class GameOver : MonoBehaviour
 
     public void ChangeScore(float score)
     {
-        scoreText.text = score.ToString();
+        scoreText.text = TimeSpan.FromSeconds(score).ToString("mm':'ss'.'f");
     }
 }

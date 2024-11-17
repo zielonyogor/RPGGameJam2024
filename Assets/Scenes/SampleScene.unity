@@ -591,8 +591,8 @@ BoxCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_LayerOverridePriority: 0
+    m_Bits: 256
+  m_LayerOverridePriority: 10
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2840,7 +2840,7 @@ GameObject:
   - component: {fileID: 1187521152}
   - component: {fileID: 1187521158}
   - component: {fileID: 1187521159}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3435,8 +3435,8 @@ BoxCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_LayerOverridePriority: 0
+    m_Bits: 256
+  m_LayerOverridePriority: 10
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3476,7 +3476,7 @@ GameObject:
   - component: {fileID: 1472200989}
   - component: {fileID: 1472200990}
   - component: {fileID: 1472200991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Footsteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4328,8 +4328,8 @@ BoxCollider2D:
     m_Bits: 128
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_LayerOverridePriority: 0
+    m_Bits: 256
+  m_LayerOverridePriority: 10
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4799,7 +4799,7 @@ GameObject:
   - component: {fileID: 2055120285}
   - component: {fileID: 2055120287}
   - component: {fileID: 2055120286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VacuumField
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,6 +15,9 @@ public class HUDController : MonoBehaviour
     public int equipment = 0;
     public int maxEquipment = 5;
 
+    private float timeSinceStart = 0;
+    private bool isPlaying = true;
+
     void Start()
     {
         gaeOverHUD.gameObject.SetActive(false);
@@ -22,13 +25,15 @@ public class HUDController : MonoBehaviour
 
     void Update()
     {
+        if (isPlaying) timeSinceStart += Time.deltaTime;
         counterText.text = "anomalies: " + Math.Min(anomalies, maxAnomalies) + "/" + maxAnomalies;
         float screwUpPercentage = (float)(anomalies - 1) / maxAnomalies;
         screwUpVolume.weight = screwUpPercentage;
         if (anomalies >= maxAnomalies)
         {
+            isPlaying = false;
             gaeOverHUD.gameObject.SetActive(true);
-            gaeOverHUD.GetComponent<GameOver>().ChangeScore(0.69f); //tu dac jakis score, czas??
+            gaeOverHUD.GetComponent<GameOver>().ChangeScore(timeSinceStart); //tu dac jakis score, czas??
         }
 
         equipmentText.text = "inventory: " + Math.Min(equipment, maxEquipment) + "/" + maxEquipment;
