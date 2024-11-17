@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Player variables")]
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float footstepsFrequency = 15f;
     [SerializeField] Vacuum vacuumObject;
     [SerializeField] GameObject startingScene;
     [SerializeField] CameraController cameraController;
@@ -119,7 +120,7 @@ public class PlayerManager : MonoBehaviour
         {
             Vector2 newPosition = playerBody.position + (moveDir * moveSpeed * Time.fixedDeltaTime);
             playerBody.MovePosition(newPosition);
-            if (Time.time - lastFootstepTime > moveSpeed / 15f)
+            if (Time.time - lastFootstepTime > moveSpeed / footstepsFrequency)
             {
                 playerFootsteps.PlayFootstepSound(currentTerrain);
                 lastFootstepTime = Time.time;

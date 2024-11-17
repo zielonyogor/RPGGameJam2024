@@ -990,7 +990,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 11.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3029,6 +3029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  footstepsFrequency: 30
   vacuumObject: {fileID: 2055120286}
   startingScene: {fileID: 1015679749}
   cameraController: {fileID: 196776243}
