@@ -9,20 +9,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: m_Color.b
-      value: 0.046272695
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: m_Color.g
-      value: 0.3660378
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: m_Color.r
-      value: 0.19687174
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: walkTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: m_Name
       value: PastSnake
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520685466540373079, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520685466540373079, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8520685466540373079, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,5 +87,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4598408719904632592}
   m_SourcePrefab: {fileID: 100100000, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+--- !u!1 &1883988518269418759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+  m_PrefabInstance: {fileID: 4712912086076949955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4598408719904632592
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883988518269418759}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 428bad619e4d5744296558b30c23bb03, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

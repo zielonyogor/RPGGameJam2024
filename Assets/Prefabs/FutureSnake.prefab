@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181110525235433393, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540923400164584876, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6371303442552606435, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: originalEra
       value: 2
@@ -15,6 +35,14 @@ PrefabInstance:
     - target: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: m_Name
       value: FutureSnake
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520685466540373079, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520685466540373079, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8520685466540373079, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59,5 +87,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4865904632568460404}
   m_SourcePrefab: {fileID: 100100000, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+--- !u!1 &3902623804278219626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+  m_PrefabInstance: {fileID: 7884117041561689006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4865904632568460404
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902623804278219626}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af72ab06a45396f439f78841b1d9ddbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
