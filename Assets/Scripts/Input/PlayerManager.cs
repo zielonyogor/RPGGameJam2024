@@ -63,7 +63,6 @@ public class PlayerManager : MonoBehaviour
                 if (suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Suck;
-                    vacuumObject.gameObject.SetActive(true);
                     break;
                 }
                 if (dropAction.IsPressed() && Time.time - lastDropTime > dropCooldown)
@@ -87,7 +86,6 @@ public class PlayerManager : MonoBehaviour
                 if (suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Suck;
-                    vacuumObject.gameObject.SetActive(true);
                     break;
                 }
                 UpdateMove();
@@ -96,13 +94,12 @@ public class PlayerManager : MonoBehaviour
                 if (!suckAction.IsPressed())
                 {
                     playerState = PlayerStates.Idle;
-                    vacuumObject.gameObject.SetActive(false);
+                    vacuumObject.HideVacuum();
                     break;
                 }
                 UpdateSuck();
                 break;
             case PlayerStates.Drop:
-                vacuumObject.gameObject.SetActive(true);
                 vacuumObject.DropObjects();
                 playerState = PlayerStates.Idle;
                 break;
@@ -134,6 +131,6 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdateSuck()
     {
-        //idk czy trzeba tu cos dawać tbh, wszystko chyba w vaccum.cs
+        vacuumObject.SuckObjects();
     }
 }
