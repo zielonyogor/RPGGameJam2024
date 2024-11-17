@@ -1,7 +1,5 @@
 using UnityEngine;
 
-
-
 public class ObjectScript : MonoBehaviour
 {
     public int objectID = 0;

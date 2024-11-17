@@ -22,9 +22,9 @@ public class Rooms
 
     private static readonly Dictionary<Room, TerrainType> roomTerrain = new Dictionary<Room, TerrainType>
     {
-        {Room.Hub, TerrainType.Foliage},
-        {Room.Past, TerrainType.Wood},
-        {Room.Present, TerrainType.Stone},
+        {Room.Hub, TerrainType.Stone},
+        {Room.Past, TerrainType.Foliage},
+        {Room.Present, TerrainType.Grass},
         {Room.Future, TerrainType.Metal}
     };
 
