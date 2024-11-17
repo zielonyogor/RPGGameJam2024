@@ -847,6 +847,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 354260575}
     m_Modifications:
+    - target: {fileID: 643643162526772268, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.584
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: teleportPoint
       value: 
@@ -855,6 +859,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 196776243}
+    - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: teleportFreezeTime
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: terrainAtTheOtherSide
       value: 3
@@ -1258,6 +1266,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 454293017}
     m_Modifications:
+    - target: {fileID: 643643162526772268, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.584
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: teleportPoint
       value: 
@@ -1266,6 +1278,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 196776243}
+    - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: teleportFreezeTime
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: terrainAtTheOtherSide
       value: 5
@@ -1343,6 +1359,7 @@ GameObject:
   - component: {fileID: 1187521153}
   - component: {fileID: 1187521152}
   - component: {fileID: 1187521158}
+  - component: {fileID: 1187521159}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1613,13 +1630,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f2c05590769014aa0134ef01a76fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
   vacuumObject: {fileID: 2055120286}
   startingScene: {fileID: 1015679749}
   cameraController: {fileID: 196776243}
   currentTerrain: 5
   movementEnabled: 1
   playerFootsteps: {fileID: 1472200991}
+--- !u!95 &1187521159
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187521151}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 42e8ab30699f02b499ae9bb5e0aeff71, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1391624082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1870,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 939283537}
     m_Modifications:
+    - target: {fileID: 643643162526772268, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.584
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: player
       value: 
@@ -1843,6 +1886,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 196776243}
+    - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: teleportFreezeTime
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: terrainAtTheOtherSide
       value: 6
@@ -2040,6 +2087,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 354260575}
     m_Modifications:
+    - target: {fileID: 643643162526772268, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.584
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: teleportPoint
       value: 
@@ -2048,6 +2099,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 196776243}
+    - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: teleportFreezeTime
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: terrainAtTheOtherSide
       value: 0
@@ -2283,6 +2338,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 454293017}
     m_Modifications:
+    - target: {fileID: 643643162526772268, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.584
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: teleportPoint
       value: 
@@ -2291,6 +2350,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 196776243}
+    - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: teleportFreezeTime
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: terrainAtTheOtherSide
       value: 0
@@ -2492,6 +2555,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 939283537}
     m_Modifications:
+    - target: {fileID: 643643162526772268, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.584
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: player
       value: 
@@ -2504,6 +2571,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 196776243}
+    - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
+      propertyPath: teleportFreezeTime
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1026945214257925029, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
       propertyPath: terrainAtTheOtherSide
       value: 0
