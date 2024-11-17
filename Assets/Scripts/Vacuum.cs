@@ -28,13 +28,19 @@ public class Vacuum : MonoBehaviour
             // Debug.Log("obiekt!!");
             ObjectScript newObject = other.gameObject.GetComponent<ObjectScript>();
             // Debug.Log($"Sucking object with ID: {newObject.objectID}, from era: {newObject.currentEra}, original era: {newObject.originalEra}");
+
+
+
             suckedObjects.Enqueue(newObject);
-            other.gameObject.SetActive(false);
+
+            StartCoroutine(AttractObjectToPlayer(other.gameObject, newObject));
+
 
             hudController.equipment = suckedObjects.Count;
             OnObjectSucked.Invoke(newObject.objectID);
         }
     }
+
 
     public void SuckObjects()
     {
@@ -45,6 +51,30 @@ public class Vacuum : MonoBehaviour
     {
         boxCollider2D.enabled = false;
     }
+
+    private IEnumerator<object> AttractObjectToPlayer(GameObject obj, ObjectScript newObject)
+    {
+        float attractionDuration = 0.2f; // Time in seconds for the object to move
+        float elapsedTime = 0f;
+
+        Vector3 startPosition = obj.transform.position;
+        Vector3 targetPosition = transform.position; // Position of the player
+
+        // Smoothly move the object towards the player
+        while (elapsedTime < attractionDuration)
+        {
+            obj.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / attractionDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure object is exactly at the target position
+        obj.transform.position = targetPosition;
+
+        // Disable the object
+        obj.SetActive(false);
+    }
+
 
     public void DropObjects()
     {
