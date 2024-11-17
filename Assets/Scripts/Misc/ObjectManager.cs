@@ -60,13 +60,13 @@ public class ObjectManager : MonoBehaviour
             GameObject newObject = Instantiate(objectPrefab, randomPosition, Quaternion.identity, parentPosition);
 
             ObjectScript objectScript = newObject.GetComponent<ObjectScript>();
-            objectScript.originalEra = (Eras)currentObjectEra;
-            if (objectScript.originalEra != (Eras)eraToSpawn)
+            objectScript.originalEra = (Era) currentObjectEra;
+            if (objectScript.originalEra != (Era) eraToSpawn)
             {
-                objectScript.currentEra = (Eras)eraToSpawn;
+                objectScript.currentEra = (Era) eraToSpawn;
                 ++counterController.anomalies;
             }
-            objectScript.currentEra = (Eras)eraToSpawn;
+            objectScript.currentEra = (Era) eraToSpawn;
             objectScript.objectID = spawnedObjects.Count;
             spawnedObjects.Add(objectScript);
         }
@@ -91,26 +91,29 @@ public class ObjectManager : MonoBehaviour
         {
             if (objectID == obj.objectID)
             {
-                Eras newEra;
+                Era newEra;
                 //na razie tak sprawdzam w jakiej epoce jest
-                if (obj.gameObject.transform.position.y > -48)
+                // if (obj.gameObject.transform.position.y > -48)
+                if (Rooms.IsInsideRoom(Room.Past, obj.gameObject.transform.position))
                 {
-                    newEra = Eras.Past;
+                    newEra = Era.Past;
                 }
-                else if (obj.gameObject.transform.position.y > -80)
+                // else if (obj.gameObject.transform.position.y > -80)
+                else if (Rooms.IsInsideRoom(Room.Future, obj.gameObject.transform.position))
                 {
-                    newEra = Eras.Present;
+                    newEra = Era.Future;
                 }
                 else
+                // else if (Rooms.IsInsideRoom(Room.Present, obj.gameObject.transform.position))
                 {
-                    newEra = Eras.Future;
+                    newEra = Era.Present;
                 }
 
                 if (obj.currentEra != obj.originalEra)
                 {
                     ++counterController.anomalies;
                 }
-                Debug.Log($"Object ({obj.objectID}) was dropped at {newEra}, previous era {obj.currentEra}, original era {obj.originalEra}");
+                // Debug.Log($"Object ({obj.objectID}) was dropped at {newEra}, previous era {obj.currentEra}, original era {obj.originalEra}");
                 obj.currentEra = newEra;
 
                 break;

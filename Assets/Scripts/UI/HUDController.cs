@@ -6,11 +6,14 @@ using TMPro;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI counterText;
+    [SerializeField] TextMeshProUGUI equipmentText;
     [SerializeField] GameObject gaeOverHUD;
     [SerializeField] Volume screwUpVolume;
 
     public int anomalies = 0;
     public int maxAnomalies = 10;
+    public int equipment = 0;
+    public int maxEquipment = 5;
 
     void Start()
     {
@@ -27,5 +30,7 @@ public class HUDController : MonoBehaviour
             gaeOverHUD.gameObject.SetActive(true);
             gaeOverHUD.GetComponent<GameOver>().ChangeScore(0.69f); //tu dac jakis score, czas??
         }
+
+        equipmentText.text = "inventory: " + Math.Min(equipment, maxEquipment) + "/" + maxEquipment;
     }
 }

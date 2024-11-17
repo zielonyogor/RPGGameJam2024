@@ -666,10 +666,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterText: {fileID: 1770171474}
+  equipmentText: {fileID: 1648387855}
   gaeOverHUD: {fileID: 1280314012}
   screwUpVolume: {fileID: 4195222}
   anomalies: 0
   maxAnomalies: 15
+  equipment: 0
+  maxEquipment: 5
 --- !u!4 &349454129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 643643162526772268, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
@@ -954,8 +957,8 @@ MonoBehaviour:
   pastRoom: {fileID: 1708539208}
   presentRoom: {fileID: 1391624083}
   futureRoom: {fileID: 1078866241}
-  minSpawnTime: 0.5
-  maxSpawnTime: 5
+  minSpawnTime: 2.5
+  maxSpawnTime: 7.5
 --- !u!4 &502782001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6874662574896521003, guid: a06930ef7e6cb204ead7d080de2894fa, type: 3}
@@ -1394,7 +1397,7 @@ GameObject:
   - component: {fileID: 593996931}
   - component: {fileID: 593996930}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GaeOverText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1448,8 +1451,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284686870
-  m_fontColor: {r: 0.08726944, g: 0.13436471, b: 0.3886792, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3110,10 +3113,10 @@ MonoBehaviour:
   moveSpeed: 10
   footstepsFrequency: 30
   vacuumObject: {fileID: 2055120286}
-  startingScene: {fileID: 1015679749}
+  startingRoom: 0
   cameraController: {fileID: 196776243}
   moveDir: {x: 0, y: 0}
-  currentTerrain: 5
+  currentTerrain: 0
   movementEnabled: 1
   playerFootsteps: {fileID: 1472200991}
 --- !u!95 &1187521159
@@ -4151,7 +4154,7 @@ GameObject:
   - component: {fileID: 1648387856}
   - component: {fileID: 1648387855}
   m_Layer: 5
-  m_Name: EquipmentCounter
+  m_Name: EquipmentCounterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4196,7 +4199,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'vacuum: 0/5'
+  m_text: 'it''s only a gae
+
+    why you heff to be mad'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02eadafafcacb8b478bfe52d466c7e07, type: 2}
   m_sharedMaterial: {fileID: 3097860578548575328, guid: 02eadafafcacb8b478bfe52d466c7e07, type: 2}
@@ -4223,8 +4228,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4261,7 +4266,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -184.67993, y: 0, z: 0, w: -27.701904}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4484,7 +4489,7 @@ GameObject:
   - component: {fileID: 1770171475}
   - component: {fileID: 1770171474}
   m_Layer: 5
-  m_Name: CounterText
+  m_Name: AnomaliesCounterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4828,8 +4833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b28b216cd822f248900b95db7d37770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentCounter: {fileID: 1648387855}
-  maxObjectCap: 5
+  hudController: {fileID: 260354966}
 --- !u!61 &2055120287
 BoxCollider2D:
   m_ObjectHideFlags: 0

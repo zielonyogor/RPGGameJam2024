@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float footstepsFrequency = 15f;
     [SerializeField] Vacuum vacuumObject;
-    [SerializeField] GameObject startingScene;
+    [SerializeField] Room startingRoom;
     [SerializeField] CameraController cameraController;
 
     private Rigidbody2D playerBody;
@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     PlayerStates playerState = PlayerStates.Idle;
 
     //Footsteps variables
-    public TerrainType currentTerrain = TerrainType.Stone;
+    public TerrainType currentTerrain;
     public bool movementEnabled = true;
 
     [SerializeField] PlayerFootsteps playerFootsteps;
@@ -51,8 +51,9 @@ public class PlayerManager : MonoBehaviour
         suckAction = playerInput.actions["Suck"];
         dropAction = playerInput.actions["Drop"];
         lastFootstepTime = Time.time;
-        playerBody.MovePosition(startingScene.transform.position);
-        cameraController.MoveCameraTo(startingScene.transform.position);
+        playerBody.MovePosition(Rooms.GetPosition(startingRoom));
+        cameraController.MoveCameraTo(Rooms.GetPosition(startingRoom));
+        currentTerrain = Rooms.GetTerrain(startingRoom);
     }
 
     void Update()

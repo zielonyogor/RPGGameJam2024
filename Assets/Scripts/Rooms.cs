@@ -9,6 +9,13 @@ public enum Room
     Future
 }
 
+public enum Era
+{
+    Past,
+    Present,
+    Future
+}
+
 public class Rooms
 {
     public static readonly int RoomSize = 32;
@@ -29,6 +36,21 @@ public class Rooms
         {Room.Future, new Vector3(0, -96, 0)}
     };
 
+    public static Era GetEra(Room room)
+    {
+        switch (room)
+        {
+            case Room.Past:
+                return Era.Past;
+            case Room.Present:
+                return Era.Present;
+            case Room.Future:
+                return Era.Future;
+            default:
+                return Era.Present;
+        }
+    }
+
     public static TerrainType GetTerrain(Room room)
     {
         return roomTerrain[room];
@@ -37,5 +59,14 @@ public class Rooms
     public static Vector3 GetPosition(Room room)
     {
         return roomPosition[room];
+    }
+
+    public static bool IsInsideRoom(Room room, Vector3 position)
+    {
+        Vector3 roomPosition = GetPosition(room);
+        return position.x >= roomPosition.x - RoomSize / 2 &&
+               position.x < roomPosition.x + RoomSize / 2 &&
+               position.y >= roomPosition.y - RoomSize / 2 &&
+               position.y < roomPosition.y + RoomSize / 2;
     }
 }
