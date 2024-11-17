@@ -71,5 +71,84 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5069932944457215047}
+    - targetCorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1544652593009245225}
+    - targetCorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2968549922462953608}
   m_SourcePrefab: {fileID: 100100000, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+--- !u!1 &8548160344316142813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6576070198978148548, guid: e87648f2635fcbd4eb712482466038f7, type: 3}
+  m_PrefabInstance: {fileID: 3306714743604288537}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5069932944457215047
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548160344316142813}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4fd85ecb6b0de2c43b7cb1ee3cb5c2c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1544652593009245225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548160344316142813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34990367c9063c4db8b7b46067aeb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  isWalking: 0
+  walkTime: 2
+  waitTime: 5
+--- !u!50 &2968549922462953608
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548160344316142813}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
