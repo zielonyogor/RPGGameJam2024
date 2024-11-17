@@ -21,7 +21,13 @@ public class PlayerManager : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction moveAction, suckAction, dropAction;
 
-    private Vector2 moveDir = new Vector2(0, 0);
+    //animator stuff
+    private Animator _animator;
+    private const string _horizontal = "Horizontal";
+    private const string _vertical = "Vertical";
+
+
+    public Vector2 moveDir = new Vector2(0, 0);
 
     PlayerStates playerState = PlayerStates.Idle;
 
@@ -37,6 +43,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        _animator = GetComponent<Animator>();
         playerBody = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
@@ -101,6 +108,8 @@ public class PlayerManager : MonoBehaviour
             default:
                 break;
         }
+
+
     }
 
     private void UpdateMove()
@@ -117,6 +126,9 @@ public class PlayerManager : MonoBehaviour
             }
         }
         cameraController.MoveCameraTo(playerBody.position);
+
+        _animator.SetFloat(_horizontal, moveDir.x);
+        _animator.SetFloat(_vertical, moveDir.y);
     }
 
     private void UpdateSuck()
