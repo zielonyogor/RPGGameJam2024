@@ -6,7 +6,7 @@ using TMPro;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI counterText;
-    [SerializeField] TextMeshProUGUI gaeOverText;
+    [SerializeField] GameObject gaeOverHUD;
     [SerializeField] Volume screwUpVolume;
 
     public int anomalies = 0;
@@ -14,17 +14,18 @@ public class HUDController : MonoBehaviour
 
     void Start()
     {
-        gaeOverText.gameObject.SetActive(false);
+        gaeOverHUD.gameObject.SetActive(false);
     }
 
     void Update()
     {
         counterText.text = "anomalies: " + Math.Min(anomalies, maxAnomalies) + "/" + maxAnomalies;
-        float screwUpPercentage = (float) (anomalies - 1) / maxAnomalies;
+        float screwUpPercentage = (float)(anomalies - 1) / maxAnomalies;
         screwUpVolume.weight = screwUpPercentage;
         if (anomalies >= maxAnomalies)
         {
-            gaeOverText.gameObject.SetActive(true);
+            gaeOverHUD.gameObject.SetActive(true);
+            gaeOverHUD.GetComponent<GameOver>().ChangeScore(0.69f); //tu dac jakis score, czas??
         }
     }
 }

@@ -40,7 +40,7 @@ public class ObjectManager : MonoBehaviour
 
             int eraToSpawn = Random.Range(0, 3), currentObjectEra = Random.Range(0, 3); //1-past, 2-present, 3-future
 
-            Vector3 randomPosition = new Vector3(Random.Range(-4, 4), Random.Range(-4, 4), 0); // randomize position here
+            Vector3 randomPosition = new Vector3(Random.Range(-12, 12), Random.Range(-12, 12), 0); // randomize position here
             Transform parentPosition;
             switch (eraToSpawn)
             {
@@ -93,11 +93,11 @@ public class ObjectManager : MonoBehaviour
             {
                 Eras newEra;
                 //na razie tak sprawdzam w jakiej epoce jest
-                if (obj.gameObject.transform.position.x < -16)
+                if (obj.gameObject.transform.position.y > -48)
                 {
                     newEra = Eras.Past;
                 }
-                else if (obj.gameObject.transform.position.y > 16)
+                else if (obj.gameObject.transform.position.y > -80)
                 {
                     newEra = Eras.Present;
                 }

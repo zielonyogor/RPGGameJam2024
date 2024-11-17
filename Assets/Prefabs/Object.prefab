@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 181110525235433393}
   - component: {fileID: 2961275025835349148}
   - component: {fileID: 6371303442552606435}
-  m_Layer: 0
+  - component: {fileID: -1530616626758658245}
+  - component: {fileID: 1540923400164584876}
+  m_Layer: 7
   m_Name: Object
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -105,7 +107,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -147,5 +149,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6daf65dcaae7144499675f0d11bd681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eraName: Cyberpunk
-  currentEra: Medieval
+  objectID: 0
+  originalEra: 0
+  currentEra: 0
+--- !u!50 &-1530616626758658245
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576070198978148548}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &1540923400164584876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576070198978148548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34990367c9063c4db8b7b46067aeb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.01
+  isWalking: 0
+  walkTime: 3
+  waitTime: 2

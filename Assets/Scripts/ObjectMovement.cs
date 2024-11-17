@@ -5,17 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ObjectMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed; //maybe changes with different types
+    [SerializeField] float moveSpeed = 2f; //maybe changes with different types
     private Rigidbody2D objectRigidbody;
 
     public bool isWalking;
 
-    public float walkTime;
+    public float walkTime = 5f;
     private float walkCounter;
     public float waitTime;
     private float waitCounter;
 
-  
+
 
     private Animator _animator;
     private const string _horizontal = "Horizontal";
@@ -40,26 +40,9 @@ public class ObjectMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isWalking) {
+        if (isWalking)
+        {
             walkCounter -= Time.deltaTime;
-
-
-            switch (walkDirection)
-            {
-                case WalkDirection.up:
-                    objectRigidbody.linearVelocity = Vector2.up * moveSpeed;
-                    break;
-                case WalkDirection.bottom:
-                    objectRigidbody.linearVelocity = Vector2.down * moveSpeed;
-                    break;
-                case WalkDirection.left:
-                    objectRigidbody.linearVelocity = Vector2.left * moveSpeed;
-                    break;
-                case WalkDirection.right:
-                    objectRigidbody.linearVelocity = Vector2.right * moveSpeed;
-                    break;
-            }
-
 
             if (walkCounter < 0)
             {
@@ -68,7 +51,6 @@ public class ObjectMovement : MonoBehaviour
 
                 waitCounter = waitTime;
             }
-
         }
         else
         {
@@ -80,7 +62,7 @@ public class ObjectMovement : MonoBehaviour
             }
         }
 
-        MoveAnimations();   
+        MoveAnimations();
 
     }
 
@@ -102,11 +84,24 @@ public class ObjectMovement : MonoBehaviour
     public void ChooseDirection()
     {
         walkDirection = (WalkDirection)UnityEngine.Random.Range(0, 4);
-
+        Debug.Log("I'm moving");
 
         isWalking = true;
         walkCounter = walkTime;
-
-
+        switch (walkDirection)
+        {
+            case WalkDirection.up:
+                objectRigidbody.linearVelocity = Vector2.up * moveSpeed;
+                break;
+            case WalkDirection.bottom:
+                objectRigidbody.linearVelocity = Vector2.down * moveSpeed;
+                break;
+            case WalkDirection.left:
+                objectRigidbody.linearVelocity = Vector2.left * moveSpeed;
+                break;
+            case WalkDirection.right:
+                objectRigidbody.linearVelocity = Vector2.right * moveSpeed;
+                break;
+        }
     }
 }
