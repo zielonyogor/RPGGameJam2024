@@ -110,10 +110,10 @@ public class Vacuum : MonoBehaviour
     }
     
     private IEnumerator<object> MoveObjectAway(GameObject obj, Vector3 startPosition, Vector3 direction, float distance, float duration)
-
     {
         float elapsedTime = 0f;
         Vector3 targetPosition = startPosition + direction * distance;
+        bool colilision = false;
 
         while (elapsedTime < duration)
         {
@@ -121,15 +121,24 @@ public class Vacuum : MonoBehaviour
             float easedT = 1 - Mathf.Pow(1 - t, 2);  // This is a quadratic ease-out function
 
             obj.transform.position = Vector3.Lerp(startPosition, targetPosition, easedT);
+            
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(obj.transform.position, 0.5f);
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.CompareTag("Walls"))
+                {
+                    Debug.Log($"Collision detected with object: {collider.name}");
+                    colilision = true;
+                }
+            }
+            if (colilision) break;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // Ensure the object is exactly at the target position
-        obj.transform.position = targetPosition;
+        if (!colilision) obj.transform.position = targetPosition;
     }
-
-
 }
 
 
