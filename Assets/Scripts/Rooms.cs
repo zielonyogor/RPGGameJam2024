@@ -69,4 +69,16 @@ public class Rooms
                position.y >= roomPosition.y - RoomSize / 2 &&
                position.y < roomPosition.y + RoomSize / 2;
     }
+
+    public static Room GetRoomAtPosition(Vector3 position)
+    {
+        foreach (Room room in roomPosition.Keys)
+        {
+            if (IsInsideRoom(room, position))
+            {
+                return room;
+            }
+        }
+        return Room.Hub;
+    }
 }

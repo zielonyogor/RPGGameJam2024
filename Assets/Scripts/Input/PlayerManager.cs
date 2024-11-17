@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Vacuum vacuumObject;
     [SerializeField] Room startingRoom;
     [SerializeField] CameraController cameraController;
+    [SerializeField] MusicController musicController;
 
     private Rigidbody2D playerBody;
     private PlayerInput playerInput;
@@ -54,6 +55,7 @@ public class PlayerManager : MonoBehaviour
         playerBody.MovePosition(Rooms.GetPosition(startingRoom));
         cameraController.MoveCameraTo(Rooms.GetPosition(startingRoom));
         currentTerrain = Rooms.GetTerrain(startingRoom);
+        musicController.UpdateMusic(startingRoom);
     }
 
     void Update()
@@ -128,6 +130,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
         cameraController.MoveCameraTo(playerBody.position);
+        musicController.UpdateMusic(Rooms.GetRoomAtPosition(playerBody.position));
 
         _animator.SetFloat(_horizontal, moveDir.x);
         _animator.SetFloat(_vertical, moveDir.y);
