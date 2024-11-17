@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
     [SerializeField] AudioSource portalSound;
     [SerializeField] Room target;
 
-    public float teleportFreezeTime = 0.5f;
+    [SerializeField] public float teleportFreezeTime = 0.25f;
     private bool isFreezeCoroutineExecuting = false;
 
     private void OnTriggerEnter2D(Collider2D player)

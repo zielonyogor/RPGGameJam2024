@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 
 public class CameraController : MonoBehaviour
 {
-    public static readonly float CameraCorrectionFactor = 10f;
+    [SerializeField] float PositionCorrectionFactor = 10f;
 
     [SerializeField] Camera mainCamera;
 
@@ -12,8 +12,8 @@ public class CameraController : MonoBehaviour
     {
         int x = ((int) (Math.Round(position.x / Rooms.RoomSize))) * Rooms.RoomSize;
         int y = ((int) (Math.Round(position.y / Rooms.RoomSize))) * Rooms.RoomSize;
-        float correctionX = CameraCorrectionFactor * (position.x - x) / Rooms.RoomSize;
-        float correctionY = CameraCorrectionFactor * (position.y - y) / Rooms.RoomSize;
+        float correctionX = PositionCorrectionFactor * (position.x - x) / Rooms.RoomSize;
+        float correctionY = PositionCorrectionFactor * (position.y - y) / Rooms.RoomSize;
         mainCamera.transform.position = new Vector3(x + correctionX, y + correctionY, mainCamera.transform.position.z);
     }
 }

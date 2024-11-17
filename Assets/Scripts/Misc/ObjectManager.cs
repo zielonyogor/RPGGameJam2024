@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectManager : MonoBehaviour
 {
     [Header("Counter")]
-    [SerializeField] CounterController counterController;
+    [SerializeField] HUDController counterController;
 
     [Header("Object to spawn")]
     [SerializeField] List<GameObject> objectPrefabs;
