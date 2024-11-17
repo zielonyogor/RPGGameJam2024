@@ -7,7 +7,7 @@ public class Vacuum : MonoBehaviour
 {
     [SerializeField] private HUDController hudController;
     [SerializeField] VacuumSounds vacuumSounds;
-    Queue<ObjectScript> suckedObjects = new Queue<ObjectScript>();
+    Stack<ObjectScript> suckedObjects = new Stack<ObjectScript>();
 
     private BoxCollider2D boxCollider2D;
 
@@ -36,7 +36,7 @@ public class Vacuum : MonoBehaviour
             ObjectScript newObject = other.gameObject.GetComponent<ObjectScript>();
             // Debug.Log($"Sucking object with ID: {newObject.objectID}, from era: {newObject.currentEra}, original era: {newObject.originalEra}");
 
-            suckedObjects.Enqueue(newObject);
+            suckedObjects.Push(newObject);
 
             vacuumSounds.PlaySingleSuccSound();
             StartCoroutine(AttractObjectToPlayer(other.gameObject, newObject));
@@ -45,7 +45,6 @@ public class Vacuum : MonoBehaviour
             OnObjectSucked.Invoke(newObject.objectID);
         }
     }
-
 
     public void SuckObjects()
     {
@@ -86,7 +85,7 @@ public class Vacuum : MonoBehaviour
     {
         if (suckedObjects.Count == 0) return;
 
-        ObjectScript item = suckedObjects.Dequeue();
+        ObjectScript item = suckedObjects.Pop();
         item.gameObject.SetActive(true);
 
         // Set initial position slightly away from the player
