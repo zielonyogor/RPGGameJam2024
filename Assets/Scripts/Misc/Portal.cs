@@ -24,7 +24,6 @@ public class Portal : MonoBehaviour
                 player.transform.position = teleportPoint.position;
                 playerManager.movementEnabled = true;
                 playerManager.currentTerrain = Rooms.GetTerrain(target);
-                playerManager.SetVision(Rooms.GetVisionMode(target));
             }
             ));
         }
