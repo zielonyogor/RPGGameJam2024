@@ -11,6 +11,8 @@ public enum Room
 
 public class Rooms
 {
+    public static readonly int RoomSize = 32;
+
     private static readonly Dictionary<Room, TerrainType> roomTerrain = new Dictionary<Room, TerrainType>
     {
         {Room.Hub, TerrainType.Foliage},
