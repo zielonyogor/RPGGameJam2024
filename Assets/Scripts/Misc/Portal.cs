@@ -6,7 +6,8 @@ public class Portal : MonoBehaviour
 {
     [Tooltip("Teleport - a child of a second portal")]
     [SerializeField] Transform teleportPoint;
-    [SerializeField] TerrainType terrainAtTheOtherSide;
+    [SerializeField] AudioSource portalSound;
+    [SerializeField] Room target;
 
     public float teleportFreezeTime = 0.5f;
     private bool isFreezeCoroutineExecuting = false;
@@ -17,11 +18,13 @@ public class Portal : MonoBehaviour
         {
             PlayerManager playerManager = player.GetComponent<PlayerManager>();
             playerManager.movementEnabled = false;
+            portalSound.Play();
             StartCoroutine(ExecuteDelayed(teleportFreezeTime, () =>
             {
                 player.transform.position = teleportPoint.position;
                 playerManager.movementEnabled = true;
-                playerManager.currentTerrain = terrainAtTheOtherSide;
+                playerManager.currentTerrain = Rooms.GetTerrain(target);
+                playerManager.SetVision(Rooms.GetVisionMode(target));
             }
             ));
         }

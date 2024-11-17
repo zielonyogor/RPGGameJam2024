@@ -123,4 +123,9 @@ public class PlayerManager : MonoBehaviour
     {
         //idk czy trzeba tu cos dawać tbh, wszystko chyba w vaccum.cs
     }
+
+    public void SetVision(VisionMode mode)
+    {
+        cameraController.SetFilter(mode);
+    }
 }
