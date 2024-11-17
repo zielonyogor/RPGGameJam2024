@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: A very slay game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 75cda775aad614a1aae27aa338cd3345, type: 2}
-  m_sharedMaterial: {fileID: -1865952605069076049, guid: 75cda775aad614a1aae27aa338cd3345, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02eadafafcacb8b478bfe52d466c7e07, type: 2}
+  m_sharedMaterial: {fileID: 3097860578548575328, guid: 02eadafafcacb8b478bfe52d466c7e07, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -314,8 +314,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: START
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 75cda775aad614a1aae27aa338cd3345, type: 2}
-  m_sharedMaterial: {fileID: -1865952605069076049, guid: 75cda775aad614a1aae27aa338cd3345, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02eadafafcacb8b478bfe52d466c7e07, type: 2}
+  m_sharedMaterial: {fileID: 3097860578548575328, guid: 02eadafafcacb8b478bfe52d466c7e07, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
